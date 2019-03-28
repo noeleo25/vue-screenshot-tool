@@ -1,0 +1,138 @@
+body#demo{
+    overflow: hidden;
+    padding: 0;
+  }
+  .footer-area{
+    background-color: #060606;
+    color: #fff;
+  }
+  #demo > .content-area{
+    height: 100%;
+    height: -webkit-fill-available;
+    height: -moz-available; 
+    flex-direction: column;     
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+  
+  .demo-overlay,
+  .demo-crosshairs
+  {
+    user-select: none;
+  }
+  .demo-element.hidden{
+    display: none;
+  }
+  .demo-crosshairs{
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 2147483644;
+  }
+  .demo-crosshairs::before,
+  .demo-crosshairs::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: none !important;
+  }
+  .demo-crosshairs::before {
+    left: -100%;
+    top: -100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  .demo-crosshairs::after {
+    left: 0px;
+    top: 0px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  .demo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .demo-overlay.highlight{
+    background: none;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+  }
+  
+  .demo-overlay.highlighting {
+    background: none;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+  }
+  
+  .demo-borderedBox {
+    border: 1px solid #fff;
+    position: absolute;
+  }
+  
+  .demo-borderedBox.save-transition{
+    transition: transform 0.5s;
+    transform: scale(0.1);
+  }
+  
+  .demo-tooltip{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    width: auto;
+    height: auto;
+    padding: 4px 8px;
+    font-size: 14px;
+    position: absolute;
+  }
+  .flash-area{
+    height: 100%;
+    background-color: #fff;
+    opacity: 1;
+    animation-delay: 0.2s;
+    animation-name: flash-animation;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    display: block !important;
+  }
+  
+  .flash-enter-active, .flash-leave-active{
+    transition: opacity .5s;
+  }
+  .flash-enter, .flash-leave-to{ 
+    opacity: 0;
+  }
+  
+  @keyframes flash-animation {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  #demo-wrapper{
+    background-image: url('../assets/rickAndMorty.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    flex-grow: 1;
+  }
+  #screenshot-area{
+    width: inherit;
+  }
+  .screenshot-area_container{
+    height: 100%;
+  }
+  .footer-container{
+    height: 80px;
+  }
