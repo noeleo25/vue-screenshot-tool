@@ -202,10 +202,3 @@ body#demo{
 #magnifier{
   position: absolute;
 }
-
-  /*** delete ***/
-#x{
-  background-image: url(/assets/rickAndMorty.jpg);
-  height: 900px;
-  width: auto;
-}
