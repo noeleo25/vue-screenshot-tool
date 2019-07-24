@@ -1,8 +1,9 @@
-# vue-screenshot-tool
-Vue component for screenshot: select area and save picture with photo (:musical_note: and :boom:) effect.
+# Vue Screenshot tool
+Vue component for screenshot: 
+* Select area and save picture with photo (:musical_note: and :boom:) effect.
+* Activate magnifier with right click (:mag:) 
 
-Demo: https://codepen.io/NoemiLeon/pen/EMqyyX
+Demo: https://noemileon.dev/screenshot-tool/
 
-* Soon I will add a tool to edit your screenshot 
-
+Codepen v1: https://codepen.io/NoemiLeon/pen/EMqyyX
 
