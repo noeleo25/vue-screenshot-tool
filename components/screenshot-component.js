@@ -6,7 +6,7 @@ const ScreenshotComponent = {
 
             <div @mousemove="move" @mousedown="startSelection" @mouseup="finishSelection" @contextmenu="toggleMagnifier($event)"
             class="screenshot-area_container d-flex flex-column justify-content-center"> 
-                <MagnifierComponent :isInit="isMagnifierInit" :pointerX="crossHairX" :pointerY="crossHairY"></MagnifierComponent>
+                <MagnifierComponent :pointerX="crossHairX" :pointerY="crossHairY"></MagnifierComponent>
                 <h3 class="align-self-center"></h3>
                 <div class="align-self-center">
                 <button id="save-demo-btn" class="demo-element demo-btn btn btn-primary btn-lg" :class="{ 'hidden' : !screenshotToCanvas }" @click="saveScreenshot"> Save Screenshot </button>
@@ -83,11 +83,19 @@ const ScreenshotComponent = {
     methods: {
         toggleMagnifier(e){
             e.preventDefault();
-            if(this.isMagnifierInit){
-                this.isMagnifierInit = false;
+            if(this.isMagnifierInit === true){
+                this.disableMagnifier();
             }else{
-                this.isMagnifierInit = true;
+               this.initMagnifier();
             }
+        },
+        initMagnifier(){
+            this.isMagnifierInit = true;
+            this.$root.$emit('initMagnifier');
+        },
+        disableMagnifier(){
+            this.isMagnifierInit = false;
+            this.$root.$emit('disableMagnifier');
         },
         move: function(e) {
             if(!this.finishedScreenshot){
@@ -212,6 +220,7 @@ const ScreenshotComponent = {
             this.isMouseDown = false;
             this.isMouseDragging = false;
             document.body.style.cursor = 'default';
+            this.disableMagnifier();
         },
 
         takeScreenshot: function(){
