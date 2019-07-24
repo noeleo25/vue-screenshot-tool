@@ -1,6 +1,7 @@
 body#demo{
     overflow: hidden;
     padding: 0;
+    background-color: #000;
   }
   .footer-area{
     background-color: #060606;
