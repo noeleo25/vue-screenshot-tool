@@ -9,6 +9,7 @@ const MagnifierComponent = {
     `,
     data: function () {
         return {
+            isInit: false,
             magnifierImgUrl: '',
             magnifierConfig: {
                 zoom: 2,
@@ -33,32 +34,20 @@ const MagnifierComponent = {
         }
     },
     props:{
-        isInit: {
-            type: Boolean,
-            
-        },
         pointerX: {
             type: Number,
-            
+            required: true,
         },
         pointerY: {
             type: Number,
-            
+            required: true,
         }
     },
     mounted(){
-        if(this.isInit){
-            this.initMagnifier();
-        }else{
-            this.disableMagnifier();
-        }
+        this.$root.$on('initMagnifier',  () => this.initMagnifier());
+        this.$root.$on('disableMagnifier',  () => this.disableMagnifier());
     },
     watch: {
-        isInit(val){
-            if(val){
-                this.initMagnifier();
-            }
-        },
         pointerX: function(){
             this.moveMagnifier();
         },
@@ -68,11 +57,13 @@ const MagnifierComponent = {
     },
     methods: {
         initMagnifier(){
-            this.captureVisibleArea()
+            this.isInit = true;
+            this.captureVisibleArea();
             this.setMagnifier();
         },
         disableMagnifier(){
             this.magnifierStyle.visibility = 'hidden';
+            this.isInit = false;
         },
         setMagnifier(){
             let magnifier = document.getElementById("_bottom_layer");
